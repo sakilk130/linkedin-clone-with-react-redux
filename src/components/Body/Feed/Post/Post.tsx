@@ -24,7 +24,7 @@ function Post({
   return (
     <div className="post">
       <div className="post__header">
-        <Avatar />
+        <Avatar src={photoUrl ? photoUrl : ''}>{name[0]}</Avatar>
         <div className="post__info">
           <h2>{name}</h2>
           <p>{description}</p>
