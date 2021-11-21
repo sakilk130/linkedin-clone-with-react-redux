@@ -11,6 +11,7 @@ import db from '../../../firebase/config';
 import firebase from 'firebase';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../../features/userSlice';
+import FlipMove from 'react-flip-move';
 
 function Feed() {
   const user = useSelector(selectUser);
@@ -50,6 +51,7 @@ function Feed() {
           <form>
             <input
               type="text"
+              placeholder="Start a post"
               value={input}
               onChange={(e) => setInput(e.target.value)}
             />
@@ -73,15 +75,18 @@ function Feed() {
           />
         </div>
       </div>
-      {posts.map(({ id, data: { name, description, message, photoUrl } }) => (
-        <Post
-          key={id}
-          name={name}
-          description={description}
-          message={message}
-          photoUrl={photoUrl}
-        />
-      ))}
+
+      <FlipMove>
+        {posts.map(({ id, data: { name, description, message, photoUrl } }) => (
+          <Post
+            key={id}
+            name={name}
+            description={description}
+            message={message}
+            photoUrl={photoUrl}
+          />
+        ))}
+      </FlipMove>
     </div>
   );
 }
