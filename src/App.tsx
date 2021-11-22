@@ -9,7 +9,6 @@ import { auth } from './firebase/config';
 import Widgets from './components/Body/Widgets/Widgets';
 import styled from 'styled-components';
 import Loader from 'react-loader-spinner';
-import { Facebook } from 'react-content-loader';
 
 function App() {
   const [loader, setLoader] = useState(true);
@@ -58,6 +57,7 @@ const Main = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: #f3f2ef;
+  height: 100vh;
 `;
 
 const AppBody = styled.div`

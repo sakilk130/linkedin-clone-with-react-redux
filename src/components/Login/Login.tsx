@@ -38,6 +38,7 @@ function Login() {
         alert(error?.message);
       });
   };
+
   const loginToApp = (e: any) => {
     e.preventDefault();
     auth
@@ -54,6 +55,7 @@ function Login() {
       })
       .catch((error) => alert(error));
   };
+
   return (
     <LoginContainer>
       <img src="/images/linkedin-logo.png" alt="linkin logo" />

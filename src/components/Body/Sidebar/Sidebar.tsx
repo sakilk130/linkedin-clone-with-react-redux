@@ -149,4 +149,5 @@ const SidebarRecentItem = styled.div`
     margin-left: 5px;
   }
 `;
+
 export default Sidebar;
