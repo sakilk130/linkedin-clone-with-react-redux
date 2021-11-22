@@ -7,10 +7,16 @@ import ChatOutlinedIcon from '@material-ui/icons/ChatOutlined';
 import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
 import SendOutlinedIcon from '@material-ui/icons/SendOutlined';
 import styled from 'styled-components';
-
+import moment from 'moment';
 const Post: any = forwardRef(
   (
-    { name, description, message, photoUrl }: InferProps<typeof Post.propTypes>,
+    {
+      name,
+      description,
+      message,
+      photoUrl,
+      timestamp,
+    }: InferProps<typeof Post.propTypes>,
     ref: any
   ) => {
     return (
@@ -19,7 +25,9 @@ const Post: any = forwardRef(
           <Avatar src={photoUrl ? photoUrl : ''}>{name[0]}</Avatar>
           <PostInfo>
             <h2>{name}</h2>
-            <p>{description}</p>
+            <p>
+              {moment(new Date(timestamp?.toDate()).toUTCString()).fromNow()}
+            </p>
           </PostInfo>
         </PostHeader>
         <PostBody>
@@ -45,6 +53,7 @@ Post.propTypes = {
   description: PropTypes.string,
   message: PropTypes.string,
   photoUrl: PropTypes.string,
+  timestamp: PropTypes.any,
 };
 
 const PostContainer = styled.div`
