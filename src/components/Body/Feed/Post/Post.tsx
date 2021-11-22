@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import './Post.css';
 import PropTypes, { InferProps } from 'prop-types';
 import Avatar from '@material-ui/core/Avatar';
 import InputOption from '../InputOption/InputOption';
@@ -7,6 +6,7 @@ import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
 import ChatOutlinedIcon from '@material-ui/icons/ChatOutlined';
 import ShareOutlinedIcon from '@material-ui/icons/ShareOutlined';
 import SendOutlinedIcon from '@material-ui/icons/SendOutlined';
+import styled from 'styled-components';
 
 const Post: any = forwardRef(
   (
@@ -14,18 +14,18 @@ const Post: any = forwardRef(
     ref: any
   ) => {
     return (
-      <div ref={ref} className="post">
-        <div className="post__header">
+      <PostContainer ref={ref}>
+        <PostHeader>
           <Avatar src={photoUrl ? photoUrl : ''}>{name[0]}</Avatar>
-          <div className="post__info">
+          <PostInfo>
             <h2>{name}</h2>
             <p>{description}</p>
-          </div>
-        </div>
-        <div className="post__body">
+          </PostInfo>
+        </PostHeader>
+        <PostBody>
           <p>{message}</p>
-        </div>
-        <div className="post__buttons">
+        </PostBody>
+        <PostBottom>
           <InputOption
             Icon={ThumbUpAltOutlinedIcon}
             title="Like"
@@ -34,8 +34,8 @@ const Post: any = forwardRef(
           <InputOption Icon={ChatOutlinedIcon} title="Comment" color="gray" />
           <InputOption Icon={ShareOutlinedIcon} title="Share" color="gray" />
           <InputOption Icon={SendOutlinedIcon} title="Send" color="gray" />
-        </div>
-      </div>
+        </PostBottom>
+      </PostContainer>
     );
   }
 );
@@ -46,5 +46,37 @@ Post.propTypes = {
   message: PropTypes.string,
   photoUrl: PropTypes.string,
 };
+
+const PostContainer = styled.div`
+  background-color: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+`;
+
+const PostHeader = styled.div`
+  display: flex;
+  margin-bottom: 10px;
+`;
+
+const PostInfo = styled.div`
+  margin-left: 10px;
+  & > h2 {
+    font-size: 15px;
+  }
+
+  & > p {
+    font-size: 12px;
+    color: gray;
+  }
+`;
+
+const PostBody = styled.div`
+  overflow-wrap: anywhere;
+`;
+
+const PostBottom = styled.div`
+  display: flex;
+`;
 
 export default Post;

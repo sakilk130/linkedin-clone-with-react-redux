@@ -1,5 +1,4 @@
 import React from 'react';
-import './Sidebar.css';
 import Avatar from '@material-ui/core/Avatar';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../../features/userSlice';
@@ -9,10 +8,10 @@ function Sidebar() {
   const user = useSelector(selectUser);
 
   const recentItems = (topic: string) => (
-    <div className="sidebar__recentItem">
-      <span className="sidebar__hash">#</span>
+    <SidebarRecentItem>
+      <span>#</span>
       <p>{topic}</p>
-    </div>
+    </SidebarRecentItem>
   );
 
   return (
@@ -29,17 +28,17 @@ function Sidebar() {
         <h4>{user?.email}</h4>
       </SidebarTop>
 
-      <SidebarStats className="sidebar__stats">
-        <SidebarStat className="sidebar__stat">
+      <SidebarStats>
+        <SidebarStat>
           <p>Who viewed you</p>
-          <p className="sidebar__statNumber">200</p>
+          <span>200</span>
         </SidebarStat>
-        <SidebarStat className="sidebar__stat">
+        <SidebarStat>
           <p>Connections</p>
-          <p className="sidebar__statNumber">200</p>
+          <span>200</span>
         </SidebarStat>
       </SidebarStats>
-      <div className="sidebar__bottom">
+      <SidebarBottom>
         <p>Recent</p>
         {recentItems('reactjs')}
         {recentItems('javascript')}
@@ -48,7 +47,7 @@ function Sidebar() {
         {recentItems('nodejs')}
         {recentItems('expressjs')}
         {recentItems('graphql')}
-      </div>
+      </SidebarBottom>
     </SidebarContainer>
   );
 }
@@ -109,6 +108,45 @@ const SidebarStat = styled.div`
     color: gray;
     font-size: 13px;
     font-weight: 600;
+  }
+  & > span {
+    font-size: 13px;
+
+    font-weight: bold;
+    color: #0a66c2 !important;
+  }
+`;
+
+const SidebarBottom = styled.div`
+  text-align: left;
+  padding: 10px;
+  border: 1px solid lightgrey;
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 10px;
+  & > p {
+    font-size: 13px;
+    padding-bottom: 10px;
+  }
+`;
+
+const SidebarRecentItem = styled.div`
+  display: flex;
+  font: 13px;
+  color: gray;
+  font-weight: bolder;
+  cursor: pointer;
+  margin-bottom: 5px;
+  padding: 5px;
+  &:hover {
+    background-color: whitesmoke;
+    border-radius: 10px;
+    cursor: pointer;
+    color: black;
+  }
+  & > span {
+    margin-right: 10px;
+    margin-left: 5px;
   }
 `;
 export default Sidebar;

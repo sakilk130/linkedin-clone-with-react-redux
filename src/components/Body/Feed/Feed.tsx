@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './Feed.css';
 import CreateIcon from '@material-ui/icons/Create';
 import InputOption from './InputOption/InputOption';
 import ImageIcon from '@material-ui/icons/Image';
@@ -12,10 +11,13 @@ import firebase from 'firebase';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../../features/userSlice';
 import FlipMove from 'react-flip-move';
+import styled from 'styled-components';
+import ContentLoader from 'react-content-loader';
 
 function Feed() {
   const user = useSelector(selectUser);
 
+  const [loader, setLoader] = useState(true);
   const [posts, setPosts] = useState([]);
   const [input, setInput] = useState('');
 
@@ -30,6 +32,7 @@ function Feed() {
           }))
         )
       );
+    setLoader(false);
   }, [input]);
 
   const sendPost = (e: any) => {
@@ -43,10 +46,11 @@ function Feed() {
     });
     setInput('');
   };
+
   return (
-    <div className="feed">
-      <div className="feed__inputContainer">
-        <div className="feed__input">
+    <FeedContainer>
+      <InputContainer>
+        <FeedInput>
           <CreateIcon />
           <form>
             <input
@@ -59,8 +63,9 @@ function Feed() {
               Send
             </button>
           </form>
-        </div>
-        <div className="feed__inputOptions">
+        </FeedInput>
+
+        <FeedInputOptions>
           <InputOption Icon={ImageIcon} title="Photo" color="#70b5f9" />
           <InputOption
             Icon={SubscriptionsIcon}
@@ -73,8 +78,26 @@ function Feed() {
             title="Write article"
             color="#7FC15E"
           />
-        </div>
-      </div>
+        </FeedInputOptions>
+      </InputContainer>
+
+      {loader && (
+        <ContentLoader
+          speed={2}
+          width={400}
+          height={160}
+          viewBox="0 0 400 160"
+          backgroundColor="#969696"
+          foregroundColor="#403f3f"
+        >
+          <rect x="48" y="8" rx="3" ry="3" width="88" height="6" />
+          <rect x="48" y="26" rx="3" ry="3" width="52" height="6" />
+          <rect x="0" y="56" rx="3" ry="3" width="410" height="6" />
+          <rect x="0" y="72" rx="3" ry="3" width="380" height="6" />
+          <rect x="0" y="88" rx="3" ry="3" width="178" height="6" />
+          <circle cx="20" cy="20" r="20" />
+        </ContentLoader>
+      )}
 
       <FlipMove>
         {posts.map(({ id, data: { name, description, message, photoUrl } }) => (
@@ -87,8 +110,49 @@ function Feed() {
           />
         ))}
       </FlipMove>
-    </div>
+    </FeedContainer>
   );
 }
+
+const FeedContainer = styled.div`
+  flex: 0.6;
+  margin: 0 20px;
+`;
+
+const InputContainer = styled.div`
+  background-color: #fff;
+  padding: 10px;
+  padding-bottom: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+`;
+
+const FeedInput = styled.div`
+  border: 1px solid lightgray;
+  border-radius: 30px;
+  display: flex;
+  padding: 10px;
+  color: gray;
+  padding-left: 15px;
+  & > form {
+    display: flex;
+    width: 100%;
+    & > input {
+      border: none;
+      flex: 1;
+      margin-left: 10px;
+      outline-width: 0;
+      font-weight: 600;
+    }
+    & > button {
+      display: none;
+    }
+  }
+`;
+
+const FeedInputOptions = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`;
 
 export default Feed;

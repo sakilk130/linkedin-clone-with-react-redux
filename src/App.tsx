@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './components/Header/Header';
 import Sidebar from './components/Body/Sidebar/Sidebar';
 import Feed from './components/Body/Feed/Feed';
@@ -8,8 +8,11 @@ import Login from './components/Login/Login';
 import { auth } from './firebase/config';
 import Widgets from './components/Body/Widgets/Widgets';
 import styled from 'styled-components';
+import Loader from 'react-loader-spinner';
+import { Facebook } from 'react-content-loader';
 
 function App() {
+  const [loader, setLoader] = useState(true);
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
@@ -24,8 +27,10 @@ function App() {
             profileUrl: userAuth?.photoURL,
           })
         );
+        setLoader(false);
       } else {
         dispatch(logout());
+        setLoader(false);
       }
     });
   }, []);
@@ -33,7 +38,9 @@ function App() {
   return (
     <Main>
       <Header />
-      {!user ? (
+      {loader ? (
+        <Loader type="Puff" color="#00BFFF" height={100} width={100} />
+      ) : !user ? (
         <Login />
       ) : (
         <AppBody>

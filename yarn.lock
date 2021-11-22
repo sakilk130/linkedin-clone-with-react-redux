@@ -2745,6 +2745,13 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.4.tgz#15925414e0ad2cd765bfef58842f7e26a7accb24"
   integrity sha512-1HcDas8SEj4z1Wc696tH56G8OlRaH/sqZOynNNB+HF0WOeXPaxTtbYzJY2oEfiUxjSKjhCKr+MvR7dCHcEelug==
 
+"@types/react-content-loader@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@types/react-content-loader/-/react-content-loader-4.0.0.tgz#2d591eb12a1600b52ce2ca2564937c1e7f00ea26"
+  integrity sha512-q06iajQsGE/fi08W7bchIX2C/dgKLMU4KLAWQOeF9WZFmXd6SeRdSjO9Z/grXaKXnjFW6+P7l6/BlN9kvO2v2A==
+  dependencies:
+    react-content-loader "*"
+
 "@types/react-dom@*":
   version "17.0.11"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.11.tgz#e1eadc3c5e86bdb5f7684e00274ae228e7bcc466"
@@ -2765,6 +2772,13 @@
   integrity sha512-NoQXHUFwboxbTV1NWf55ztoESiX/ShHUySG8uRCiu8ExBH+K033mRHAnBHAK8izVsH/eSfA3/IA1o1CqHA8QGg==
   dependencies:
     react-flip-move "*"
+
+"@types/react-loader-spinner@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@types/react-loader-spinner/-/react-loader-spinner-4.0.0.tgz#20e58530c120529f3e7d9c26f950b9c80575f080"
+  integrity sha512-FKW/yD3KwpydC8gsLmdWCOW0v/aezTvxcqqU0umNHa4QNkVF37UgOeh6DgXIPkxRm/m+6fcgW9XYK6Ff+HCd3A==
+  dependencies:
+    react-loader-spinner "*"
 
 "@types/react-redux@^7.1.20", "@types/react-redux@^7.1.7":
   version "7.1.20"
@@ -10363,6 +10377,11 @@ react-app-polyfill@^2.0.0:
     regenerator-runtime "^0.13.7"
     whatwg-fetch "^3.4.1"
 
+react-content-loader@*, react-content-loader@^6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/react-content-loader/-/react-content-loader-6.0.3.tgz#32e28ca7120e0a2552fc26655d0d4448cc1fc0c5"
+  integrity sha512-CIRgTHze+ls+jGDIfCitw27YkW2XcaMpsYORTUdBxsMFiKuUYMnlvY76dZE4Lsaa9vFXVw+41ieBEK7SJt0nug==
+
 react-dev-utils@^11.0.3:
   version "11.0.4"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-11.0.4.tgz#a7ccb60257a1ca2e0efe7a83e38e6700d17aa37a"
@@ -10426,6 +10445,13 @@ react-is@^17.0.1:
   version "17.0.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
+
+react-loader-spinner@*, react-loader-spinner@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/react-loader-spinner/-/react-loader-spinner-4.0.0.tgz#43d9e71b0574219f64216933c28ef5faa12262f6"
+  integrity sha512-RU2vpEej6G4ECei0h3q6bgLU10of9Lw5O+4AwF/mtkrX5oY20Sh/AxoPJ7etbrs/7Q3u4jN5qwCwGLRKCHpk6g==
+  dependencies:
+    prop-types "^15.7.2"
 
 react-redux@^7.2.0:
   version "7.2.6"
